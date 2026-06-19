@@ -4,226 +4,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Webpage</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to a CSS file -->
+    <title>Chen Xu</title>
+    <meta name="description" content="Chen Xu — Research Scientist at Toyota Research Institute, working on safe and robust Large Behavior Models for robot manipulation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        body {
-            line-height: 1.5;
-            /* Adjust the value to make the line spacing wider */
+        :root {
+            --bg: #ffffff;
+            --text: #2b2b2b;
+            --soft: #555;
+            --faint: #888;
+            --link: #b03a2e;
+            --rule: #e6e6e6;
+            --max: 820px;
         }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HERO ---------- */
+        header.hero { padding: 46px 0 10px; }
+        .hero-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+        }
+        @media (max-width: 620px) {
+            .hero-row { flex-direction: column; align-items: center; text-align: center; }
+        }
+        .hero-row img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin: 0 0 4px;
+            letter-spacing: -0.01em;
+        }
+        .hero .role {
+            color: var(--soft);
+            margin: 0 0 14px;
+            font-size: 1.02rem;
+        }
+        .hero p { margin: 0 0 12px; }
+        .hero .links-inline {
+            font-size: 0.96rem;
+            color: var(--faint);
+        }
+        .hero .links-inline a { margin: 0 2px; }
+
+        /* ---------- SECTIONS ---------- */
+        section { padding: 30px 0; }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0 0 6px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .group-note {
+            color: var(--soft);
+            font-size: 0.96rem;
+            margin: 14px 0 4px;
+        }
+
+        h3.subhead {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 26px 0 4px;
+        }
+
+        /* ---------- PUBLICATION LIST ---------- */
+        ol.pubs {
+            list-style: none;
+            margin: 8px 0 0;
+            padding: 0;
+            counter-reset: pub;
+        }
+        ol.pubs > li {
+            position: relative;
+            padding: 12px 0 12px 34px;
+            border-bottom: 1px solid var(--rule);
+            counter-increment: pub;
+        }
+        ol.pubs > li:last-child { border-bottom: none; }
+        ol.pubs > li::before {
+            content: counter(pub);
+            position: absolute;
+            left: 0;
+            top: 13px;
+            color: var(--faint);
+            font-size: 0.85rem;
+            font-weight: 700;
+            min-width: 22px;
+        }
+        .pub-title {
+            font-weight: 700;
+            color: var(--text);
+        }
+        .pub-title a { color: var(--text); }
+        .pub-title a:hover { color: var(--link); }
+        .authors { color: var(--soft); }
+        .authors .me { color: var(--text); font-weight: 700; }
+        .venue { color: var(--soft); font-style: italic; }
+        .hl { color: var(--link); font-weight: 700; font-style: normal; }
+        .reslinks { color: var(--faint); }
+        .reslinks .sep { color: var(--rule); }
+        .sub-li {
+            margin-top: 8px;
+            padding-left: 14px;
+            border-left: 2px solid var(--rule);
+            color: var(--soft);
+            font-size: 0.95rem;
+        }
+        .impact {
+            margin-top: 8px;
+            color: var(--soft);
+            font-size: 0.95rem;
+        }
+        .impact .hl { font-weight: 700; }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid var(--rule);
+            margin-top: 24px;
+            padding: 24px 0 50px;
+            color: var(--faint);
+            font-size: 0.9rem;
+        }
+        footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
     </style>
 </head>
 
 <body>
-    <section>
-        <h1>Chen Xu's Research Webpage</h1>
-        <div style="display: flex; align-items: flex-start;">
-            <img src="files/profile_picture.jpg" alt="A picture of me"
-                style="width:100px;height:auto;margin-right:15px;">
-            <p>
-                I am a Research Scientist at <a href="https://www.tri.global/our-work/robotics">Toyota
-                    Research Institute (Robotics division)</a>, working on safe and robust Large
-                    Behavior Models (aka. generalist policies) for robot manipulation.
-                <br>
-                <b>Education:</b>
-                <br>
-                --- I completed my PhD in Operations Research (specializing in Machine Learning), working with Prof. <a
-                    href="https://www2.isye.gatech.edu/~yxie77/index.html">Yao Xie</a> at Georgia Tech <a
-                    href="https://www.isye.gatech.edu/">ISyE</a>.
-                <br>
-                --- Before my PhD, I completed my joint BS/MS degrees, working with Prof. <a
-                    href="https://rinafb.github.io/">Rina Foygel Barber</a> at the University of Chicago. My MS degree
-                is in <a href="https://stat.uchicago.edu/">Statistics</a>, and my BS degrees are Computational and Applied Mathematics and Economics (data science
-                concentration).
-                <br>
-                <b>Email:</b> chen.xu@tri.global
+    <header class="hero" id="top">
+        <div class="wrap">
+            <div class="hero-row" id="about">
+                <img src="files/profile_picture.jpg" alt="Chen Xu">
+                <div>
+                    <h1>Chen Xu</h1>
+                    <p class="role">Research Scientist, Toyota Research Institute</p>
+                    <p>
+                        I work on safe and robust Large Behavior Models (i.e., generalist policies) for
+                        robot manipulation at the
+                        <a href="https://www.tri.global/our-work/robotics">Toyota Research Institute</a>
+                        (Robotics division), on the
+                        <a href="https://www.tri.global/trustworthy-learning-under-uncertainty-tlu">Trustworthy Learning under Uncertainty (TLU)</a> team.
+                    </p>
+                    <p style="margin-bottom:6px;"><b>Research interests.</b>
+                        safe &amp; reliable generalist manipulation policies, flow-based generative modeling,
+                        uncertainty quantification.
+                    </p>
+                    <p style="margin-bottom:6px;"><b>Education.</b>
+                        PhD in Operations Research (specializing in Machine Learning) with Prof.
+                        <a href="https://www2.isye.gatech.edu/~yxie77/index.html">Yao Xie</a> at
+                        Georgia Tech ISyE. Before that, joint BS/MS
+                        degrees with Prof. <a href="https://rinafb.github.io/">Rina Foygel Barber</a> at the
+                        University of Chicago — MS in Statistics, BS in
+                        Computational &amp; Applied Mathematics and Economics (data science concentration).
+                    </p>
+                    <p class="links-inline">
+                        <b style="color:var(--soft);">Email:</b> chen.xu@tri.global
+                        &nbsp;·&nbsp;
+                        <a href="https://scholar.google.com/citations?hl=en&user=uFBeAl0AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>
+                        &nbsp;·&nbsp;
+                        <a href="https://www.linkedin.com/in/chen-xu-92013714a/">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <b>Websites:</b> [<a href="https://www.linkedin.com/in/chen-xu-92013714a/">LinkedIn</a>, <a
-            href="https://scholar.google.com/citations?hl=en&user=uFBeAl0AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>]
+    <section id="research">
+        <div class="wrap">
+            <h2>Research</h2>
 
-        <p> <b>Research Interests: </b> safe & reliable generalist manipulation policies, flow-based generative modeling, uncertainty quantification.</p>
+            <!-- ===== Imitation Learning ===== -->
+            <h3 class="subhead">Imitation Learning for Robot Manipulation</h3>
+            <ol class="pubs">
+                <li>
+                    <span class="authors">Fanqi Lin, …, <span class="me">Chen Xu</span>, …, Jose Barreiros.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2602.01067">A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation</a></span>
+                    <span class="venue">Robotics: Science and Systems (RSS) 2026.</span>
+                    <span class="reslinks">[<a href="https://co-training-lbm.github.io/">Website</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="hl">TRI LBM division</span> (main contributor).</span>
+                    <span class="pub-title"><a href="https://www.science.org/doi/10.1126/scirobotics.aea6201">A Careful Examination of Large Behavior Models for Multitask Dexterous Manipulation</a></span>
+                    <span class="venue"><span class="hl">Science Robotics</span>, April 2026 <span class="hl">(Cover paper)</span>.</span>
+                    <span class="reslinks">[<a href="https://toyotaresearchinstitute.github.io/lbm1/">Website</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, T. K. Nguyen, P. Miller, R. Lee, P. Shah, R. A. Ambrus, H. Nishimura, and M. Itkina.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2503.08558">Can We Detect Failures Without Failure Data? Uncertainty-Aware Runtime Failure Detection for Imitation Learning Policies</a></span>
+                    <span class="venue">Robotics: Science and Systems (RSS) 2025.</span>
+                    <span class="reslinks">[<a href="https://cxu-tri.github.io/FAIL-Detect-Website/">Website</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FAIL_Detect_RSS.pdf">Poster</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/RSS_talk.mp4">RSS Talk</a>]</span>
+                    <div class="sub-li">
+                        (Preliminary) <a href="https://openreview.net/forum?id=199tJ1rxmh">Uncertainty-Aware Failure Detection for Imitation Learning Robot Policies</a>.
+                        <span class="venue">CoRL 2024 Workshop on Safe and Robust Robot Learning for Operation in the Real World (Spotlight).</span>
+                    </div>
+                </li>
+            </ol>
 
+            <!-- ===== Flow-based ===== -->
+            <h3 class="subhead">Flow-based Generative Modeling</h3>
+            <p class="group-note">See this
+                <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FlowIntroSlide.pdf">introductory slide</a>
+                to normalizing flow and flow matching, presented at the Toyota Research Institute Machine Learning reading group.</p>
+            <ol class="pubs">
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Xiuyuan Cheng, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2410.02548">Local flow matching generative models</a></span>
+                    <span class="venue">IEEE Transactions on Information Theory (TIT), 2025.</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Jonghyeok Lee, Xiuyuan Cheng, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2310.19253">Flow-based distributionally robust optimization</a></span>
+                    <span class="venue">IEEE Journal on Selected Areas in Information Theory (JSAIT), 2024.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FlowDRO.pdf">Poster</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Xiuyuan Cheng, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://openreview.net/forum?id=ZQMlfNijY5">Normalizing flow neural networks by JKO scheme</a></span>
+                    <span class="venue">NeurIPS 2023 <span class="hl">(Spotlight)</span>.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/JKOiFlow.pdf">Poster</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/JKOiFlowSlide.pdf">Slide</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Xiuyuan Cheng, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://openreview.net/forum?id=ReUeclFikK">Computing high-dimensional optimal transport by flow neural networks</a></span>
+                    <span class="venue">AISTATS 2025.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FlowOT.pdf">Poster</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Xiuyuan Cheng, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2206.01163">Invertible neural networks for graph prediction</a></span>
+                    <span class="venue">IEEE Journal on Selected Areas in Information Theory (JSAIT), 2022.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/IGNN.pdf">Poster</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/IGNNSlide.pdf">Slide</a>]</span>
+                </li>
+            </ol>
 
+            <!-- ===== Conformal Prediction ===== -->
+            <h3 class="subhead">Conformal Prediction</h3>
+            <p class="group-note">See this
+                <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/CPSlide.pdf">slide</a>
+                summarizing my progress (up to the end of 2024) on time-series conformal prediction, with a
+                <a href="https://www.youtube.com/watch?v=NQHrTMZ2-XA">recorded talk</a> organized by the Time Series Analysis and Forecasting Society (TAFS).</p>
+            <ol class="pubs">
+                <li>
+                    <span class="authors">Junghwan Lee, <span class="me">Chen Xu</span>, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2502.05709">Flow-based conformal prediction for multi-dimensional time series</a></span>
+                    <span class="venue">ICLR 2026.</span>
+                </li>
+                <li>
+                    <span class="authors">Jonghyeok Lee, <span class="me">Chen Xu</span>, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2405.16828">Kernel-based optimally weighted conformal prediction intervals</a></span>
+                    <span class="venue">ICLR 2025.</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Hanyang Jiang, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://openreview.net/forum?id=uN39Tt9P8b">Conformal prediction for multi-dimensional time series by ellipsoidal sets</a></span>
+                    <span class="venue">ICML 2024 <span class="hl">(Spotlight)</span>.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/MultiDimSPCI.pdf">Poster</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/MultiDimSPCISlide.pdf">Slide</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span> and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://openreview.net/forum?id=jJeY7w8YRz">Sequential predictive conformal inference for time series</a></span>
+                    <span class="venue">ICML 2023.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SPCI.pdf">Poster</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SPCISlide.pdf">Slide</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span> and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2010.09107">Conformal prediction for time series</a></span>
+                    <span class="venue">IEEE Transactions on Pattern Analysis and Machine Intelligence <span class="hl">(TPAMI)</span>, 2023.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/EnbPI.pdf">Poster</a>, <a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/EnbPISlide.pdf">Slide</a>]</span>
+                    <div class="impact">
+                        The method <span class="hl">EnbPI</span> has been independently implemented in six open-source libraries:
+                        <a href="https://github.com/scikit-learn-contrib/MAPIE">MAPIE</a>,
+                        <a href="https://github.com/awslabs/Fortuna">Fortuna</a>,
+                        <a href="https://github.com/sktime/skpro">skpro</a>,
+                        <a href="https://github.com/ml-stat-Sustech/TorchCP">TorchCP</a>,
+                        <a href="https://github.com/deel-ai/puncc">PUNCC</a>,
+                        <a href="https://github.com/JuliaTrustworthyAI/ConformalPrediction.jl">ConformalPrediction.jl</a>.
+                    </div>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span> and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2206.07851">Conformal prediction set for time-series</a></span>
+                    <span class="venue">ICML 2022 Workshop on Distribution-free Uncertainty Quantification.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/ERAPS.pdf">Poster</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span> and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2105.11886">Conformal anomaly detection on spatio-temporal observations with missing data</a></span>
+                    <span class="venue">ICML 2021 Workshop on Distribution-free Uncertainty Quantification.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/ECAD.pdf">Poster</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span> and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://proceedings.mlr.press/v139/xu21h">Conformal prediction interval for dynamic time-series</a></span>
+                    <span class="venue">ICML 2021 <span class="hl">(oral)</span>.</span>
+                </li>
+                <li>
+                    <span class="authors">Byol Kim, <span class="me">Chen Xu</span>, and Rina Barber.</span>
+                    <span class="pub-title"><a href="https://proceedings.neurips.cc/paper/2020/hash/2b346a0aa375a07f5a90a344a61416c4-Abstract.html">Predictive inference is free with the jackknife+-after-bootstrap</a></span>
+                    <span class="venue">NeurIPS 2020.</span>
+                </li>
+            </ol>
+
+            <!-- ===== Miscellaneous ===== -->
+            <h3 class="subhead">Miscellaneous</h3>
+            <ol class="pubs">
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Minghe Zhang, Andy Sun, Feng Qiu, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2101.11179">Solar radiation ramping events modeling using spatio-temporal point processes</a></span>
+                    <span class="venue">INFORMS Journal on Data Science (IJDS), 2025.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SolarSlide.pdf">Slide</a>]</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Yao Xie, Daniel A. Zuniga Vazquez, Rui Yao, and Feng Qiu.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2207.13250">Spatio-temporal wildfire prediction using multi-modal data</a></span>
+                    <span class="venue">IEEE Journal on Selected Areas in Information Theory (JSAIT), 2023.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/WildfireSlide.pdf">Slide</a>]</span>
+                </li>
+                <li>
+                    <span class="authors">Anatoli Juditsky, Arkadi Nemirovski, Yao Xie, and <span class="me">Chen Xu</span>.</span>
+                    <span class="pub-title"><a href="https://arxiv.org/abs/2304.13793">Generalized generalized linear models: Convex estimation and online bounds</a></span>
+                    <span class="venue">arXiv:2304.13793, 2023.</span>
+                </li>
+                <li>
+                    <span class="authors"><span class="me">Chen Xu</span>, Xiuyuan Cheng, and Yao Xie.</span>
+                    <span class="pub-title"><a href="https://openreview.net/forum?id=grA3k6QcGI">An alternative approach to train neural networks using monotone variational inequality</a></span>
+                    <span class="venue">OPT 2023: Optimization for Machine Learning.</span>
+                    <span class="reslinks">[<a href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SVI.pdf">Poster</a>]</span>
+                </li>
+            </ol>
+        </div>
     </section>
-    <section>
-        <h1>Research</h1>
-        <section>
-            <h3>Imitation Learning for Robot Manipulation</h3>
-            <ol>
-                <li>Fanqi Lin, ..., <b>Chen Xu</b>, ..., Jose Barreiros.</span>
-                    <a href="https://arxiv.org/abs/2602.01067">A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation</a> [<a
-                        href="https://co-training-lbm.github.io/">Website</a>]. <i>Robotics: Science and Systems (RSS) 2026.</i>
-                    <ul>
-                    </ul>
-                <li><span style="color: red;">TRI LBM division (main contributor).</span>
-                    <a href="https://www.science.org/doi/10.1126/scirobotics.aea6201">A Careful Examination of Large Behavior Models
-                        for Multitask Dexterous Manipulation</a> [<a
-                        href="https://toyotaresearchinstitute.github.io/lbm1/">Website</a>]. <i><span style="color: red;">Science Robotics</span>, April 2026.</i>
-                    <ul>
-                    </ul>
-                <li><b>Chen Xu</b>, T. K. Nguyen, P. Miller, R. Lee, P. Shah, R. A. Ambrus, H. Nishimura, and M. Itkina.
-                    <a href="https://arxiv.org/abs/2503.08558">Can We Detect Failures Without Failure Data?
-                        Uncertainty-Aware Runtime Failure Detection for Imitation Learning Policies</a> [<a
-                        href="https://cxu-tri.github.io/FAIL-Detect-Website/">Website</a>, <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FAIL_Detect_RSS.pdf">Poster</a>, <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/RSS_talk.mp4">RSS Talk</a>]. <i>Robotics:
-                        Science and Systems (RSS) 2025.</i>
-                    <ul>
-                        <li> (Preliminary) <a href="https://openreview.net/forum?id=199tJ1rxmh">Uncertainty-Aware
-                                Failure
-                                Detection for
-                                Imitation Learning Robot Policies</a>.
-                            <i>CoRL 2024 Workshop on Safe and Robust Robot
-                                Learning
-                                for Operation in the Real World (Spotlight)</i>.
-                        </li>
-                    </ul>
-            </ol>
 
-            <h3>Flow-based Generative Modeling</h3>
-            <p>See this <a
-                    href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FlowIntroSlide.pdf">introductory
-                    slide</a> to normalizing flow and flow matching, where I presented at Toyota Research Institute
-                Machine Learning reading group.</p>
-            <ol>
-                <li><b>Chen Xu</b>, Xiuyuan Cheng, and Yao Xie. <a href="https://arxiv.org/abs/2410.02548">Local flow
-                        matching generative models</a>. <i>IEEE Transactions on Information Theory (TIT)</i>, 2025.</li>
-                <li><b>Chen Xu</b>, Jonghyeok Lee, Xiuyuan Cheng, and Yao Xie. <a
-                        href="https://arxiv.org/abs/2310.19253">Flow-based distributionally robust optimization</a>.
-                    <i>IEEE Journal on Selected Areas in Information Theory (JSAIT)</i>, 2024. [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FlowDRO.pdf">Poster</a>]
-                </li>
-                <li><b>Chen Xu</b>, Xiuyuan Cheng, and Yao Xie. <a
-                        href="https://openreview.net/forum?id=ZQMlfNijY5">Normalizing flow neural networks by JKO
-                        scheme</a>. <i>NeurIPS 2023 <span style="color: red;">(Spotlight)</span>.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/JKOiFlow.pdf">Poster</a>,
-                    <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/JKOiFlowSlide.pdf">Slide</a>]
-                </li>
-                <li><b>Chen Xu</b>, Xiuyuan Cheng, and Yao Xie. <a
-                        href="https://openreview.net/forum?id=ReUeclFikK">Computing high-dimensional optimal transport
-                        by flow neural networks</a>. <i>AISTATS 2025.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/FlowOT.pdf">Poster</a>]
-                </li>
-                <li><b>Chen Xu</b>, Xiuyuan Cheng, and Yao Xie. <a href="https://arxiv.org/abs/2206.01163">Invertible
-                        neural networks for graph prediction</a>. <i>IEEE Journal on Selected Areas in Information
-                        Theory (JSAIT)</i>, 2022. [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/IGNN.pdf">Poster</a>,
-                    <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/IGNNSlide.pdf">Slide</a>]
-                </li>
-            </ol>
-        </section>
-
-        <section>
-            <h3>Conformal Prediction</h3>
-            <p>See this <a
-                    href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/CPSlide.pdf">slide</a> as a
-                summary of my progress (up to the end of 2024) on time-serie conformal prediction, with a <a
-                    href="https://www.youtube.com/watch?v=NQHrTMZ2-XA">recorded talk</a> organized by Time Series
-                Analysis And Forecasting Society (TAFS).</p>
-            <ol>
-                <li>Junghwan Lee, <b>Chen Xu</b>, and Yao Xie. <a href="https://arxiv.org/abs/2502.05709">Flow-based
-                        conformal prediction for multi-dimensional time series.</a>. <i>ICLR 2026.</i></li>
-                <li>Jonghyeok Lee, <b>Chen Xu</b>, and Yao Xie. <a href="https://arxiv.org/abs/2405.16828">Kernel-based
-                        optimally weighted conformal prediction intervals</a>. <i>ICLR 2025</i>.</li>
-                <li><b>Chen Xu</b>, Hanyang Jiang, and Yao Xie. <a
-                        href="https://openreview.net/forum?id=uN39Tt9P8b">Conformal prediction for multi-dimensional
-                        time series by ellipsoidal sets</a>. <i>ICML 2024 <span
-                            style="color: red;">(Spotlight)</span>.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/MultiDimSPCI.pdf">Poster</a>,
-                    <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/MultiDimSPCISlide.pdf">Slide</a>]
-                </li>
-                <li><b>Chen Xu</b> and Yao Xie. <a href="https://openreview.net/forum?id=jJeY7w8YRz">Sequential
-                        predictive conformal inference for time series</a>. <i>ICML 2023.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SPCI.pdf">Poster</a>,
-                    <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SPCISlide.pdf">Slide</a>]
-                </li>
-                <li><b>Chen Xu</b> and Yao Xie. <a href="https://arxiv.org/abs/2010.09107">Conformal prediction for time
-                        series</a>. <i>IEEE Transactions on Pattern Analysis and Machine Intelligence <span
-                            style="color: red;">(TPAMI)</span></i>, 2023. [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/EnbPI.pdf">Poster</a>,
-                    <a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/EnbPISlide.pdf">Slide</a>]
-                </li>
-                - The method <b>EnbPI</b> has been independently <span style="color: red;">implemented</span> in six
-                open-source libraries: <a href="https://github.com/scikit-learn-contrib/MAPIE">MAPIE</a>, <a
-                    href="https://github.com/awslabs/Fortuna">Fortuna</a>, <a
-                    href="https://github.com/sktime/skpro">skpro</a>, <a
-                    href="https://github.com/ml-stat-Sustech/TorchCP">TorchCP</a>, <a
-                    href="https://github.com/deel-ai/puncc">PUNCC</a>, <a
-                    href="https://github.com/JuliaTrustworthyAI/ConformalPrediction.jl">ConformalPrediction.jl</a>.
-                <li><b>Chen Xu</b> and Yao Xie. <a href="https://arxiv.org/abs/2206.07851">Conformal prediction set for
-                        time-series</a>. <i>ICML 2022 Workshop on Distribution-free Uncertainty Quantification.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/ERAPS.pdf">Poster</a>]
-                </li>
-                <li><b>Chen Xu</b> and Yao Xie. <a href="https://arxiv.org/abs/2105.11886">Conformal anomaly detection
-                        on spatio-temporal observations with missing data</a>. <i>ICML 2021 Workshop on
-                        Distribution-free Uncertainty Quantification.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/ECAD.pdf">Poster</a>]
-                </li>
-                <li><b>Chen Xu</b> and Yao Xie. <a href="https://proceedings.mlr.press/v139/xu21h">Conformal prediction
-                        interval for dynamic time-series</a>. <i>ICML 2021 <span style="color: red;">(oral)</span>.</i>
-                </li>
-                <li>Byol Kim, <b>Chen Xu</b>, and Rina Barber. <a
-                        href="https://proceedings.neurips.cc/paper/2020/hash/2b346a0aa375a07f5a90a344a61416c4-Abstract.html">Predictive
-                        inference is free with the jackknife+-after-bootstrap</a>. <i>NeurIPS 2020.</i></li>
-            </ol>
-        </section>
-
-        <section>
-            <h3>Miscellaneous</h3>
-            <ol>
-                <li> <b>Chen Xu</b>, Minghe Zhang, Andy Sun, Feng Qiu, and Yao Xie. <a
-                        href="https://arxiv.org/abs/2101.11179">Solar radiation ramping events modeling using
-                        spatio-temporal point processes</a>. <i> INFORMS Journal on Data Science (IJDS), 2025.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SolarSlide.pdf">Slide</a>]
-                </li>
-                <li><b>Chen Xu</b>, Yao Xie, Daniel A Zuniga Vazquez, Rui Yao, and Feng Qiu. <a
-                        href="https://arxiv.org/abs/2207.13250">Spatio-temporal wildfire prediction using multi-modal
-                        data</a>. <i>IEEE Journal on Selected Areas in Information Theory (JSAIT)</i>, 2023. [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/WildfireSlide.pdf">Slide</a>]
-                </li>
-                <li>Anatoli Juditsky, Arkadi Nemirovski, Yao Xie, and <b>Chen Xu</b>. <a
-                        href="https://arxiv.org/abs/2304.13793">Generalized generalized linear models: Convex estimation
-                        and online bounds</a>. <i>arXiv:2304.13793</i>, 2023.</li>
-                <li><b>Chen Xu</b>, Xiuyuan Cheng, and Yao Xie. <a href="https://openreview.net/forum?id=grA3k6QcGI">An
-                        alternative approach to train neural networks using monotone variational inequality</a>. <i>OPT
-                        2023: Optimization for Machine Learning.</i> [<a
-                        href="https://github.com/hamrel-cxu/hamrel-cxu.github.io/blob/main/files/SVI.pdf">Poster</a>]
-                </li>
-            </ol>
-        </section>
-    </section>
-    <!-- News section commented out (kept for future use)
-    <section>
-        <h1>News</h1>
-        <ul>
-            <li><b>[Jul. 2025]</b> Super excited to share that our <span style="color: red;">division-wide LBM 1.0 project</span> is now live! The
-                paper "<a
-                href="https://arxiv.org/abs/2507.05331">A Careful Examination of Large Behavior Models for Multitask Dexterous Manipulation</a>" is now
-                available on arXiv.
-            </li>
-            <li><b>[Apr. 2025]</b> Excited to share the paper "Can We Detect Failures Without Failure Data?
-                Uncertainty-Aware Runtime Failure Detection for Imitation Learning Policies" is accepted by RSS 2025.
-            </li>
-            <li><b>[Feb 2025]</b> I am excited to join TRI as a full-time research scientist in the Large Behavior
-                Modeling (LBM) team, working on robotics foundation models at scale.</li>
-            <li><b>[Jan 2025]</b> I successfully defended my PhD dissertation titled "Conformal Prediction for Time
-                Series and Flow-based Generative Models".</li>
-            <li><b>[Aug. 2020 - Jan. 2025]</b> I spent a fruitful and rewarding four-and-a-half years at Georgia Tech,
-                working with Prof. Yao Xie on conformal prediction and flow-based generative modeling.</li>
-            <li><b>[May 2024 - Aug. 2024]</b> I spent three wonderful months as a Research Scientist intern at TRI
-                Trustworthy Learning under Uncertainty (TLU) team, led by Masha Itkina and Haruki Nishimura.</li>
-            <li><b>[Oct. 2016 - Jun. 2020]</b> I completed my joint BS/MS degrees under the supervision of Prof. Rina
-                Foygel Barber at the University of Chicago.</li>
-        </ul>
-        </ul>
-    </section>
-    -->
+    <footer>
+        <div class="wrap">
+            <span>chen.xu@tri.global</span>
+            <span>© 2026 Chen Xu</span>
+        </div>
+    </footer>
 </body>
 
 </html>
