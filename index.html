@@ -102,6 +102,26 @@
             margin: 26px 0 4px;
         }
 
+        /* ---------- FEATURED (MAIN FOCUS) BLOCK ---------- */
+        .featured {
+            background: #eaf3fb;
+            border: 1px solid #c5ddf2;
+            border-left: 4px solid #2f80b8;
+            border-radius: 6px;
+            padding: 6px 22px 14px;
+            margin: 22px 0 10px;
+        }
+        .featured h3.subhead { margin-top: 16px; }
+        .featured .main-focus {
+            color: #2f80b8;
+            font-weight: 700;
+            font-size: 1em;
+            letter-spacing: 0.02em;
+        }
+        /* keep alternating row separators readable on the tinted background */
+        .featured ol.pubs > li { border-bottom-color: #cfe2f3; }
+        .featured .sub-li { border-left-color: #b9d6ee; }
+
         /* ---------- PUBLICATION LIST ---------- */
         ol.pubs {
             list-style: none;
@@ -207,8 +227,9 @@
         <div class="wrap">
             <h2>Research</h2>
 
-            <!-- ===== Imitation Learning ===== -->
-            <h3 class="subhead">Imitation Learning for Robot Manipulation</h3>
+            <!-- ===== Imitation Learning (Main Focus) ===== -->
+            <div class="featured">
+            <h3 class="subhead">Imitation Learning for Robot Manipulation <span class="main-focus">(Main Focus)</span></h3>
             <ol class="pubs">
                 <li>
                     <span class="authors">Fanqi Lin, …, <span class="me">Chen Xu</span>, …, Jose Barreiros.</span>
@@ -233,6 +254,7 @@
                     </div>
                 </li>
             </ol>
+            </div>
 
             <!-- ===== Flow-based ===== -->
             <h3 class="subhead">Flow-based Generative Modeling</h3>
